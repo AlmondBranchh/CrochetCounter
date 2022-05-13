@@ -5,6 +5,10 @@ int counter = 0;
 class CounterSection extends StatefulWidget {
   const CounterSection({Key? key}) : super(key: key);
 
+  int CounterValue(){
+    return counter;
+  }
+
   @override
   State<CounterSection> createState() => _CounterSectionState();
 }
