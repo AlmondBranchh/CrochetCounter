@@ -56,7 +56,7 @@ class _CounterSectionState extends State<CounterSection> {
           onPressed: _counterAdd,
           child: Text(
             "$counter",
-            style: TextStyle(fontSize: 64),
+            style: TextStyle(fontSize: 84),
           ),
 
 

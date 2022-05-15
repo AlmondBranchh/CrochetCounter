@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/counter.dart';
+import 'package:crochet_counter/widgets/counter.dart';
+import 'package:crochet_counter/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,18 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Crochet Couter",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Project name"),
-        ),
-        body: Column(
-          children: const [
-            CounterSection(),
-          ],
-        )
-      ),
+    return const MaterialApp(
+      title: "Crochet Counter",
+      home: HomeScreen(),
     );
   }
 }
