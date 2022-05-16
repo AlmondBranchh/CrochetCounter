@@ -1,3 +1,4 @@
+import 'package:crochet_counter/widgets/saves_list.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/widgets/counter.dart';
 
@@ -16,10 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Project"),
       ),
       body: Column(
-        children: const [
-          CounterSection(),
-        ],
-      ),
+      children: const [
+        CounterSection(),
+        SavesList(),
+    ],
+      )
     );
   }
 }

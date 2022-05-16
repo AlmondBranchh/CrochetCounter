@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-int counter = 0;
+import 'package:crochet_counter/data.dart';
 
 class CounterSection extends StatefulWidget {
   const CounterSection({Key? key}) : super(key: key);
@@ -12,21 +11,6 @@ class CounterSection extends StatefulWidget {
 class _CounterSectionState extends State<CounterSection> {
   @override
   Widget build(BuildContext context) {
-    void _counterSub(){
-      setState((){
-        counter --;
-      });
-    }
-    void _counterAdd(){
-      setState((){
-        counter ++;
-      });
-    }
-    void _counterClear(){
-      setState((){
-        counter = 0;
-      });
-    }
 
     return Container(
       alignment: Alignment.center,
@@ -43,7 +27,10 @@ class _CounterSectionState extends State<CounterSection> {
             shape: const CircleBorder(),
           ),
 
-          onPressed: _counterSub,
+          onPressed: () {setState((){
+            SubFromCounter();
+          });
+            },
           child: const Icon(Icons.arrow_back_ios_rounded),
 
 
@@ -53,9 +40,12 @@ class _CounterSectionState extends State<CounterSection> {
             shape: const CircleBorder(),
           ),
 
-          onPressed: _counterAdd,
+          onPressed: () {setState((){
+            AddToCounter();
+          });
+            },
           child: Text(
-            "$counter",
+            GetCounterValueString(),
             style: TextStyle(fontSize: 84),
           ),
 
@@ -67,7 +57,10 @@ class _CounterSectionState extends State<CounterSection> {
               shape: const CircleBorder(),
             ),
 
-            onPressed: _counterClear,
+            onPressed: (){setState((){
+              ClearCounter();
+            });
+              },
             child: Icon(Icons.clear)
         ),
         ],
