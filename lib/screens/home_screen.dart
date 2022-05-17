@@ -17,6 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Project"),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
       children: const [
         CounterSection(),
         SavesList(),

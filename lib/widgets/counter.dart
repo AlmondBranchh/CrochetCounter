@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/data.dart';
+import 'package:crochet_counter/widgets/manual_counter_change.dart';
 
 class CounterSection extends StatefulWidget {
   const CounterSection({Key? key}) : super(key: key);
@@ -44,6 +45,15 @@ class _CounterSectionState extends State<CounterSection> {
             AddToCounter();
           });
             },
+          onLongPress: (){
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ManualCounterEditor();
+              }
+            ).then((value) => setState((){})
+            );
+          },
           child: Text(
             GetCounterValueString(),
             style: TextStyle(fontSize: 84),

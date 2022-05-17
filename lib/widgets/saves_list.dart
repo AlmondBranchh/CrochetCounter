@@ -1,6 +1,5 @@
 import 'package:crochet_counter/data.dart';
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/styles/text.dart';
 
 class SavesList extends StatefulWidget {
   const SavesList({Key? key}) : super(key: key);
@@ -41,7 +40,10 @@ Widget SavesListRow(int index){
     );
   } else {
   return Container(
+    color: Color.fromRGBO(0, 50, 150, 25+index*25),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Text(
             "Row""${SavesListIndex() - index}"": ",
@@ -52,7 +54,7 @@ Widget SavesListRow(int index){
         Text(
             SavesListValueString(SavesListIndex()-index-1),
           style: TextStyle(
-            fontSize: 28,
+            fontSize: 48,
           ),
         ),
       ],
@@ -69,17 +71,19 @@ Widget FirstSaveListRow(int index){
   } else {
     return Container(
       child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
         children: [
           Text(
               "Row""${SavesListIndex() - index}"": ",
               style: TextStyle(
-                fontSize: 56,
+                fontSize: 64,
               ),
           ),
           Text(
               SavesListValueString(SavesListIndex()-index-1),
               style: TextStyle(
-                fontSize: 48,
+                fontSize: 56,
               ),
 
           ),

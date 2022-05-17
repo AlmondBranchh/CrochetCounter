@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 int counter = 0;
 List<String> savesList = <String>[" "," "," "," "," "];
 int savesListIndex = 0;
@@ -9,11 +7,15 @@ void AddToCounter(){
 }
 
 void SubFromCounter(){
-  counter--;
+  if(counter > 0) counter--;
 }
 
 void  ClearCounter(){
   counter = 0;
+}
+
+void SetCounter(String counterChange){
+  counter = int.parse(counterChange);
 }
 
 String GetCounterValueString(){
