@@ -1,5 +1,6 @@
 import 'package:crochet_counter/data.dart';
 
+List<Project> listOfProjects = <Project>[mockProject()];
 
 class Project{
   final int id;
@@ -31,4 +32,8 @@ void LoadProject(){
 
 String GetProjectName(){
   return mockProject().name;
+}
+
+List<Project> GetProjectList(){
+  return listOfProjects;
 }
