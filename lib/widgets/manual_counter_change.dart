@@ -12,16 +12,19 @@ class _ManualCounterEditorState extends State<ManualCounterEditor> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Manual Change"),
+      alignment: Alignment.center,
+      title: Text("Counter Change"),
       content: SizedBox(
         height: 200,
         width: 200,
       child: Column(
         children: [
           TextField(
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 84,
             ),
+            keyboardType: TextInputType.number,
             controller: TextEditingController(
 
                 text: GetCounterValueString()
