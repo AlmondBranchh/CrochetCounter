@@ -16,13 +16,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("Project"),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
       children: const [
         CounterSection(),
         SavesList(),
     ],
+      )
       )
     );
   }
