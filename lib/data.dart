@@ -1,5 +1,6 @@
+
 int counter = 0;
-List<String> savesList = <String>[" "," "," "," "," "];
+List<int> savesList = <int>[];
 int savesListIndex = 0;
 
 void AddToCounter(){
@@ -23,7 +24,7 @@ String GetCounterValueString(){
 }
 
 void AddCounterValueToSavesList(){
-  savesList.insert(savesListIndex, counter.toString());
+  savesList.insert(savesListIndex, counter);
   savesListIndex ++;
 }
 
@@ -38,3 +39,14 @@ String SavesListValueString(int index){
 int SavesListIndex(){
   return savesListIndex;
 }
+
+List<int> GetSaveList(){
+  return savesList;
+}
+
+void SetSaveList(List<int> newSaveList){
+  savesList.addAll(newSaveList);
+  savesListIndex = savesList.length;
+}
+
+
