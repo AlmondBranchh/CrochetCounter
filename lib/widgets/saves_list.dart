@@ -1,5 +1,6 @@
 import 'package:crochet_counter/data.dart';
 import 'package:flutter/material.dart';
+import 'package:crochet_counter/styles/text.dart';
 
 class SavesList extends StatefulWidget {
   const SavesList({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class _SavesListState extends State<SavesList> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
             onPressed: (){
@@ -21,7 +24,7 @@ class _SavesListState extends State<SavesList> {
               },
             child: Text("Save")
         ),
-        SavesListRow(0),
+        FirstSaveListRow(0),
         SavesListRow(1),
         SavesListRow(2),
         SavesListRow(3),
@@ -32,11 +35,56 @@ class _SavesListState extends State<SavesList> {
 }
 
 Widget SavesListRow(int index){
+  if(SavesListIndex() - index < 1) {
+    return Container(
+      child: Text(" "),
+    );
+  } else {
   return Container(
     child: Row(
       children: [
-        Text(LastSavesListValueString(index)),
+        Text(
+            "Row""${SavesListIndex() - index}"": ",
+          style: TextStyle(
+            fontSize: 32,
+          ),
+        ),
+        Text(
+            SavesListValueString(SavesListIndex()-index-1),
+          style: TextStyle(
+            fontSize: 28,
+          ),
+        ),
       ],
     ),
   );
+}
+}
+
+Widget FirstSaveListRow(int index){
+  if(SavesListIndex() - index < 1) {
+    return Container(
+      child: Text(" "),
+    );
+  } else {
+    return Container(
+      child: Row(
+        children: [
+          Text(
+              "Row""${SavesListIndex() - index}"": ",
+              style: TextStyle(
+                fontSize: 56,
+              ),
+          ),
+          Text(
+              SavesListValueString(SavesListIndex()-index-1),
+              style: TextStyle(
+                fontSize: 48,
+              ),
+
+          ),
+        ],
+      ),
+    );
+  }
 }

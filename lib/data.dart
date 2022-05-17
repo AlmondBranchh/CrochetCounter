@@ -22,8 +22,17 @@ String GetCounterValueString(){
 
 void AddCounterValueToSavesList(){
   savesList.insert(savesListIndex, counter.toString());
+  savesListIndex ++;
 }
 
-String LastSavesListValueString(int index){
-  return savesList[index].toString();
+String SavesListValueString(int index){
+  if(index >  -1) {
+    return savesList[index].toString();
+  } else {
+    return " ";
+    }
+  }
+
+int SavesListIndex(){
+  return savesListIndex;
 }
