@@ -1,5 +1,6 @@
 import 'package:crochet_counter/project.dart';
 import 'package:flutter/material.dart';
+import 'package:crochet_counter/widgets/create_new_project.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -13,7 +14,13 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
 
     void newProjectPressed(){
-
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return NewProjectWindow();
+          }
+      ).then((value) => setState((){})
+      );
     }
 
     return Drawer(
