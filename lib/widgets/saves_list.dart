@@ -16,6 +16,10 @@ class _SavesListState extends State<SavesList> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(150, 50),
+              shape: RoundedRectangleBorder(),
+            ),
             onPressed: (){
               setState((){
                 AddCounterValueToSavesList();

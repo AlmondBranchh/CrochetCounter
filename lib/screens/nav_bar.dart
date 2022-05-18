@@ -1,4 +1,7 @@
+
+
 import 'package:crochet_counter/project.dart';
+import 'package:crochet_counter/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/widgets/create_new_project.dart';
 
@@ -24,6 +27,7 @@ class _NavBarState extends State<NavBar> {
     }
 
     return Drawer(
+
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -36,17 +40,18 @@ class _NavBarState extends State<NavBar> {
               itemCount: GetProjectList().length,
               shrinkWrap: true,
               itemBuilder: (context, index){
-                return ProjectTile(index);
+                return ListTile(
+                  onTap: (){
+                    setState((){});
+                    OpenProject(GetProjectList()[index]);
+                    Navigator.pop(context);
+                  },
+                  title: Text(GetProjectList()[index].name),
+                );
               },
             )
           ],
         )
     );
   }
-}
-
-Widget ProjectTile(int projectIndex){
-  return ListTile(
-    title: Text(GetProjectList()[projectIndex].name),
-  );
 }

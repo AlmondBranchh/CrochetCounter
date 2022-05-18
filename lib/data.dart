@@ -45,6 +45,7 @@ List<int> GetSaveList(){
 }
 
 void SetSaveList(List<int> newSaveList){
+  savesList.clear();
   savesList.addAll(newSaveList);
   savesListIndex = savesList.length;
 }

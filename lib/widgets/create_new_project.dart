@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:crochet_counter/project.dart';
 
 class NewProjectWindow extends StatefulWidget {
   const NewProjectWindow({Key? key}) : super(key: key);
@@ -8,6 +9,13 @@ class NewProjectWindow extends StatefulWidget {
 }
 
 class _NewProjectWindowState extends State<NewProjectWindow> {
+
+  TextEditingController projectNameController = new TextEditingController();
+
+  void _createNewProject(){
+    CreateNewProject(projectNameController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -17,7 +25,15 @@ class _NewProjectWindowState extends State<NewProjectWindow> {
           child: Column(
             children: [
               TextField(
-
+                controller: projectNameController,
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    child: Text("Save"),
+                    onPressed: _createNewProject,
+                  )
+                ],
               )
             ],
           ),

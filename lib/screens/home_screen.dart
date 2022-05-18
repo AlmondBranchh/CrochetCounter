@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: NavBar(),
       appBar: AppBar(
         title: Text(
-            GetProjectName(),
+            GetCurrentProjectName(),
           textAlign: TextAlign.center,
         ),
       ),
