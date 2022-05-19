@@ -21,6 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
     LoadProject();
   }
 
+  void dispose(){
+    SaveProject();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

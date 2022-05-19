@@ -1,6 +1,6 @@
 
 int counter = 0;
-List<int> savesList = <int>[];
+List<String> savesList = <String>[];
 int savesListIndex = 0;
 
 void AddToCounter(){
@@ -24,7 +24,7 @@ String GetCounterValueString(){
 }
 
 void AddCounterValueToSavesList(){
-  savesList.insert(savesListIndex, counter);
+  savesList.insert(savesListIndex, counter.toString());
   savesListIndex ++;
 }
 
@@ -40,14 +40,20 @@ int SavesListIndex(){
   return savesListIndex;
 }
 
-List<int> GetSaveList(){
+List<String> GetSaveList(){
   return savesList;
 }
 
-void SetSaveList(List<int> newSaveList){
-  savesList = <int>[];
-  savesList.addAll(newSaveList);
-  savesListIndex = newSaveList.length;
+void SetSaveList(String string){
+  savesList = <String>[];
+  savesList.addAll(StringToList(string));
+  savesListIndex = StringToList(string).length;
 }
 
+String ListToString(List<String> list){
+  return list.join(",");
+}
 
+List<String> StringToList(String list){
+  return list.split(",");
+}

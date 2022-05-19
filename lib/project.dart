@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-List<Project> listOfProjects = <Project>[mockProject(),mockProject2()];
+List<Project> listOfProjects = <Project>[mockProject()];
 List<int> currentList = <int>[];
 
 
 class Project{
   String name;
   int counterValue;
-  List<int> savesList;
+  String savesList;
 
   Project({
     required this.name,
@@ -24,17 +24,9 @@ Project currentProject = mockProject();
 
 Project mockProject(){
   return Project(
-    name: "My Project",
+    name: "Mock Project",
     counterValue: 7,
-    savesList: <int>[23,67,4,5],
-  );
-}
-
-Project mockProject2(){
-  return Project(
-    name: "My Project2",
-    counterValue: 69,
-    savesList: <int>[23],
+    savesList: "1,2,3",
   );
 }
 
@@ -47,7 +39,7 @@ void LoadProject() async {
     join(await getDatabasesPath(), "projects.db"),
     onCreate: (db, version){
       return db.execute(
-        "CREATE TABLE projects(name TEXT, counterValue INTEGER)",
+        "CREATE TABLE projects(name TEXT, counterValue INTEGER, savesList TEXT)",
       );
     },
     version: 1,
@@ -59,7 +51,7 @@ void LoadProject() async {
         return Project(
           name: maps[index]["name"],
           counterValue: maps[index]["counterValue"],
-          savesList: <int>[],
+          savesList: maps[index]["savesList"],
         );
       });
     }
@@ -74,7 +66,7 @@ void CreateNewProject(String name) async {
   Project newProject = Project(
     name: name,
     counterValue: 0,
-    savesList: <int>[]
+    savesList: "0"
   );
 
       WidgetsFlutterBinding.ensureInitialized();
@@ -82,7 +74,7 @@ void CreateNewProject(String name) async {
       join(await getDatabasesPath(), "projects.db"),
       onCreate: (db, version){
   return db.execute(
-  "CREATE TABLE projects(name TEXT, counterValue INTEGER)",
+  "CREATE TABLE projects(name TEXT, counterValue INTEGER, savesList TEXT)",
   );
   },
   version: 1,
@@ -112,8 +104,8 @@ String GetCurrentProjectName(){
 
 void SaveProject() async {
 
-   currentList = GetSaveList();
-   currentProject.savesList = currentList;
+
+   currentProject.savesList = ListToString(GetSaveList());
    currentProject.counterValue = int.parse(GetCounterValueString());
 
    WidgetsFlutterBinding.ensureInitialized();
@@ -121,7 +113,7 @@ void SaveProject() async {
      join(await getDatabasesPath(), "projects.db"),
      onCreate: (db, version){
        return db.execute(
-         "CREATE TABLE projects(name TEXT, counterValue INTEGER)",
+         "CREATE TABLE projects(name TEXT, counterValue INTEGER, savesList TEXT)",
        );
      },
      version: 1,
@@ -144,5 +136,6 @@ Map<String, dynamic> projectToMap(Project project){
   return{
     "name" : project.name,
     "counterValue" : project.counterValue,
+    "savesList" : project.savesList,
   };
 }
