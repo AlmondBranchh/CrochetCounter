@@ -1,13 +1,15 @@
 import 'package:crochet_counter/data.dart';
 
-List<Project> listOfProjects = <Project>[mockProject()];
+List<Project> listOfProjects = <Project>[mockProject(),mockProject2()];
+List<int> currentList = <int>[];
+
 
 class Project{
-  final String name;
-  final int counterValue;
-  final List<int> savesList;
+  String name;
+  int counterValue;
+  List<int> savesList;
 
-  const Project({
+  Project({
     required this.name,
     required this.counterValue,
     required this.savesList,
@@ -17,10 +19,18 @@ class Project{
 Project currentProject = mockProject();
 
 Project mockProject(){
-  return const Project(
+  return Project(
     name: "My Project",
     counterValue: 7,
     savesList: <int>[23,67,4,5],
+  );
+}
+
+Project mockProject2(){
+  return Project(
+    name: "My Project2",
+    counterValue: 69,
+    savesList: <int>[23],
   );
 }
 
@@ -44,11 +54,19 @@ void CreateNewProject(String name){
 }
 
 void OpenProject(Project project){
-  SetCounter(project.counterValue.toString());
-  SetSaveList(project.savesList);
   currentProject = project;
+  SetCounter(currentProject.counterValue.toString());
+  SetSaveList(currentProject.savesList);
 }
 
 String GetCurrentProjectName(){
   return currentProject.name;
+}
+
+void SaveProject(){
+
+   currentList = GetSaveList();
+   currentProject.savesList = currentList;
+   print(currentProject.savesList);
+   currentProject.counterValue = int.parse(GetCounterValueString());
 }

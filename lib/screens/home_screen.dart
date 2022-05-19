@@ -1,8 +1,9 @@
+import 'package:crochet_counter/screens/savelist_screen.dart';
 import 'package:crochet_counter/widgets/saves_list.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/widgets/counter.dart';
 import 'package:crochet_counter/project.dart';
-import 'package:crochet_counter/screens/nav_bar.dart';
+import 'package:crochet_counter/screens/project_selector.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -22,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
       appBar: AppBar(
         title: Text(
             GetCurrentProjectName(),
@@ -33,7 +33,30 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
-      children: const [
+      children: [
+        Row(
+        children: [
+        ElevatedButton(
+        onPressed: (){
+          SaveProject();
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProjectSelector())
+      ).then((value) => setState((){}));
+      },
+        child: Text("Projects"),
+      ),
+          ElevatedButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SavesListScreen())
+              );
+            },
+            child: Text("Saves List"),
+          )
+      ],
+    ),
         CounterSection(),
         SavesList(),
     ],
