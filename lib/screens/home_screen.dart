@@ -34,35 +34,37 @@ class _HomeScreenState extends State<HomeScreen> {
             GetCurrentProjectName(),
           textAlign: TextAlign.center,
         ),
+        leading: IconButton(
+            onPressed: (){
+              SaveProject();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProjectSelector())
+              ).then((value) => setState((){}));
+            },
+            icon: Icon(Icons.menu)
+          ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: IconButton(
+            onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SavesListScreen())
+              );
+            },
+            icon: Icon(Icons.book),
+           )
+          ),
+        ],
+
       ),
       body: SingleChildScrollView(
         child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
       children: [
-        Row(
-        children: [
-        ElevatedButton(
-        onPressed: (){
-          SaveProject();
-      Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ProjectSelector())
-      ).then((value) => setState((){}));
-      },
-        child: Text("Projects"),
-      ),
-          ElevatedButton(
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SavesListScreen())
-              );
-            },
-            child: Text("Saves List"),
-          ),
-      ],
-    ),
         CounterSection(),
         SavesList(),
     ],

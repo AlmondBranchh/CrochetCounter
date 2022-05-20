@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/data.dart';
 import 'package:crochet_counter/widgets/manual_counter_change.dart';
+import 'package:flutter/services.dart';
 
 class CounterSection extends StatefulWidget {
   const CounterSection({Key? key}) : super(key: key);
@@ -28,14 +29,16 @@ class _CounterSectionState extends State<CounterSection> {
             shape: const CircleBorder(),
           ),
 
-          onPressed: () {setState((){
+          onPressed: () {
+            setState((){
             SubFromCounter();
           });
             },
           child: const Icon(Icons.arrow_back_ios_rounded),
 
 
-        ),ElevatedButton(
+        ),
+        ElevatedButton(
           style: ElevatedButton.styleFrom(
             fixedSize: const Size(250, 250),
             shape: const CircleBorder(),
@@ -44,6 +47,7 @@ class _CounterSectionState extends State<CounterSection> {
           onPressed: () {setState((){
             AddToCounter();
           });
+            HapticFeedback.lightImpact();
             },
           onLongPress: (){
             showDialog(
@@ -53,6 +57,7 @@ class _CounterSectionState extends State<CounterSection> {
               }
             ).then((value) => setState((){})
             );
+            HapticFeedback.mediumImpact();
           },
           child: Text(
             GetCounterValueString(),
