@@ -25,7 +25,12 @@ class _SavesListState extends State<SavesList> {
                 AddCounterValueToSavesList();
               });
               },
-            child: Text("Save")
+            child: Text(
+                "Save",
+              style: TextStyle(
+                fontSize: 24,
+              ),
+            )
         ),
         savesListSection(context),
 
@@ -48,7 +53,26 @@ Widget savesListSection(BuildContext context){
 
 Widget saveListTile(int index){
   return ListTile(
-    title: Text(SavesListValueString(index)),
+    title: Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child:  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text(
+          SavesListNameString(index),
+          style: TextStyle(
+            fontSize: GetFontSize(index)
+          ),
+        ),
+        Text(
+          SavesListValueString(index),
+          style:  TextStyle(
+              fontSize: GetFontSize(index)
+          ),
+        ),
+      ],
+    )
+    )
   );
 }
 

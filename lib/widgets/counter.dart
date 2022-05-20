@@ -16,7 +16,7 @@ class _CounterSectionState extends State<CounterSection> {
 
     return Container(
       alignment: Alignment.center,
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.symmetric(vertical: 24),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       mainAxisSize: MainAxisSize.min ,

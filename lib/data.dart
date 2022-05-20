@@ -2,6 +2,7 @@
 
 int counter = 0;
 List<String> savesList = <String>[];
+List<String> savesListNames = <String>[];
 
 void AddToCounter(){
   counter ++;
@@ -25,6 +26,7 @@ String GetCounterValueString(){
 
 void AddCounterValueToSavesList(){
   savesList.insert(0, counter.toString());
+  savesListNames.insert(0, "Row"+"${savesListNames.length}");
 }
 
 String SavesListValueString(int index){
@@ -35,8 +37,21 @@ String SavesListValueString(int index){
     }
   }
 
+  String SavesListNameString(int index){
+    return savesListNames[index].toString();
+  }
+
+  void SetNamesList(String string){
+  savesListNames = <String>[];
+  savesListNames.addAll(StringToList(string));
+  }
+
 List<String> GetSaveList(){
   return savesList;
+}
+
+List<String> GetNameList(){
+  return savesListNames;
 }
 
 void SetSaveList(String string){
@@ -56,4 +71,8 @@ int GetItemCount(){
   if(savesList.length < 5){return savesList.length;}
   else{return 5;}
 
+}
+
+double GetFontSize(int index){
+  return 48-(index.toDouble()*2);
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:crochet_counter/widgets/counter.dart';
 import 'package:crochet_counter/project.dart';
 import 'package:crochet_counter/screens/project_selector.dart';
+import 'package:crochet_counter/screens/settings.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -56,6 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.book),
            )
           ),
+          Padding(
+              padding: EdgeInsets.only(right: 16),
+            child: IconButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen())
+                );
+              },
+              icon: Icon(Icons.settings),
+            ),
+          )
         ],
 
       ),
