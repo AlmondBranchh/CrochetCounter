@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:crochet_counter/widgets/counter.dart';
 import 'package:crochet_counter/project.dart';
 import 'package:crochet_counter/screens/project_selector.dart';
-import 'package:crochet_counter/file_manager.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -61,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
@@ -73,3 +73,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

@@ -66,7 +66,7 @@ void CreateNewProject(String name) async {
   Project newProject = Project(
     name: name,
     counterValue: 0,
-    savesList: "0"
+    savesList: ""
   );
 
       WidgetsFlutterBinding.ensureInitialized();

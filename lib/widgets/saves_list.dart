@@ -27,47 +27,32 @@ class _SavesListState extends State<SavesList> {
               },
             child: Text("Save")
         ),
-        FirstSaveListRow(0),
-        SavesListRow(1),
-        SavesListRow(2),
-        SavesListRow(3),
-        SavesListRow(4),
+        savesListSection(context),
+
       ],
     );
   }
 }
 
-Widget SavesListRow(int index){
-  if(SavesListIndex() - index < 1) {
-    return Container(
-      child: Text(" "),
-    );
-  } else {
-  return Container(
-    color: Color.fromRGBO(0, 50, 150, 25+index*25),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Text(
-            "Row""${SavesListIndex() - index}"": ",
-          style: TextStyle(
-            fontSize: 32,
-          ),
-        ),
-        Text(
-            SavesListValueString(SavesListIndex()-index-1),
-          style: TextStyle(
-            fontSize: 48,
-          ),
-        ),
-      ],
-    ),
+Widget savesListSection(BuildContext context){
+
+  return ListView.builder(
+    scrollDirection: Axis.vertical,
+    shrinkWrap: true,
+    itemCount: GetItemCount(),
+    itemBuilder: (context, index){
+      return saveListTile(index);
+    }
   );
 }
+
+Widget saveListTile(int index){
+  return ListTile(
+    title: Text(SavesListValueString(index)),
+  );
 }
 
-Widget FirstSaveListRow(int index){
+/*Widget FirstSaveListRow(int index){
   if(SavesListIndex() - index < 1) {
     return Container(
       child: Text(" "),
@@ -96,3 +81,5 @@ Widget FirstSaveListRow(int index){
     );
   }
 }
+
+ */

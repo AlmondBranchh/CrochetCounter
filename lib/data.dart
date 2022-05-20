@@ -1,7 +1,7 @@
 
+
 int counter = 0;
 List<String> savesList = <String>[];
-int savesListIndex = 0;
 
 void AddToCounter(){
   counter ++;
@@ -24,8 +24,7 @@ String GetCounterValueString(){
 }
 
 void AddCounterValueToSavesList(){
-  savesList.insert(savesListIndex, counter.toString());
-  savesListIndex ++;
+  savesList.insert(0, counter.toString());
 }
 
 String SavesListValueString(int index){
@@ -36,10 +35,6 @@ String SavesListValueString(int index){
     }
   }
 
-int SavesListIndex(){
-  return savesListIndex;
-}
-
 List<String> GetSaveList(){
   return savesList;
 }
@@ -47,7 +42,6 @@ List<String> GetSaveList(){
 void SetSaveList(String string){
   savesList = <String>[];
   savesList.addAll(StringToList(string));
-  savesListIndex = StringToList(string).length;
 }
 
 String ListToString(List<String> list){
@@ -56,4 +50,10 @@ String ListToString(List<String> list){
 
 List<String> StringToList(String list){
   return list.split(",");
+}
+
+int GetItemCount(){
+  if(savesList.length < 5){return savesList.length;}
+  else{return 5;}
+
 }
