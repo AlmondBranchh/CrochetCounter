@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/widgets/create_new_project.dart';
-import 'package:crochet_counter/project.dart';
+import 'package:crochet_counter/frontend_ui/widgets/create_new_project.dart';
+import 'package:crochet_counter/logic/project.dart';
 
 class ProjectSelector extends StatefulWidget {
   const ProjectSelector({Key? key}) : super(key: key);

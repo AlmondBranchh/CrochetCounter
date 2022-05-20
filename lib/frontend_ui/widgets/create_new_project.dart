@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/project.dart';
+import 'package:crochet_counter/logic/project.dart';
 
 class NewProjectWindow extends StatefulWidget {
   const NewProjectWindow({Key? key}) : super(key: key);

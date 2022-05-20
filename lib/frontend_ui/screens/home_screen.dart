@@ -1,10 +1,10 @@
-import 'package:crochet_counter/screens/savelist_screen.dart';
-import 'package:crochet_counter/widgets/saves_list.dart';
+import 'package:crochet_counter/frontend_ui/screens/savelist_screen.dart';
+import 'package:crochet_counter/frontend_ui/widgets/saves_list.dart';
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/widgets/counter.dart';
-import 'package:crochet_counter/project.dart';
-import 'package:crochet_counter/screens/project_selector.dart';
-import 'package:crochet_counter/screens/settings.dart';
+import 'package:crochet_counter/frontend_ui/widgets/counter.dart';
+import 'package:crochet_counter/logic/project.dart';
+import 'package:crochet_counter/frontend_ui/screens/project_selector.dart';
+import 'package:crochet_counter/frontend_ui/screens/settings.dart';
 
 
 class HomeScreen extends StatefulWidget {

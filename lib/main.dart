@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/widgets/counter.dart';
-import 'package:crochet_counter/screens/home_screen.dart';
+import 'package:crochet_counter/frontend_ui/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {

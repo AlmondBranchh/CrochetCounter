@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/data.dart';
+import 'package:crochet_counter/logic/data.dart';
 
 class ManualCounterEditor extends StatefulWidget {
   const ManualCounterEditor({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:crochet_counter/data.dart';
+import 'package:crochet_counter/logic/data.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';

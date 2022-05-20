@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/data.dart';
-import 'package:crochet_counter/widgets/manual_counter_change.dart';
+import 'package:crochet_counter/logic/data.dart';
+import 'package:crochet_counter/frontend_ui/widgets/manual_counter_change.dart';
 import 'package:flutter/services.dart';
 
 class CounterSection extends StatefulWidget {
