@@ -1,8 +1,11 @@
 
 
+import 'package:crochet_counter/logic/project.dart';
+
 int counter = 0;
 List<String> savesList = <String>[];
 List<String> savesListNames = <String>[];
+int selectedProjectIndex = 0;
 
 void AddToCounter(){
   counter ++;
@@ -76,4 +79,16 @@ int GetItemCount(){
 double GetFontSize(int index){
   if(index > 5){return 30.toDouble();}
   else {return 40-(index.toDouble()*2);}
+}
+
+Project SelectedProject(int index){
+  return listOfProjects[index];
+}
+
+void SelectedProjectIndex(int index){
+  selectedProjectIndex = index;
+}
+
+int GetSelectedProjectIndex(){
+  return selectedProjectIndex;
 }

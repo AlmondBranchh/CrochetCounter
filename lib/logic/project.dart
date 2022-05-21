@@ -161,3 +161,30 @@ Map<String, dynamic> projectToMap(Project project){
     "currentProject" : project.currentProject,
   };
 }
+
+void DeleteProject(Project project) async{
+  listOfProjects.remove(project);
+
+
+  WidgetsFlutterBinding.ensureInitialized();
+  final database = openDatabase(
+    join(await getDatabasesPath(), "projects.db"),
+    onCreate: (db, version){
+      return db.execute(
+        "CREATE TABLE projects(name TEXT, counterValue INTEGER, savesList TEXT, namesList TEXT, currentProject INTEGER)",
+      );
+    },
+    version: 1,
+  );
+
+  Future<void> deleteProject() async{
+    final db = await database;
+    await db.delete(
+      "projects",
+      where: "name = ?",
+      whereArgs: [project.name]
+    );
+  }
+  deleteProject();
+  OpenProject(listOfProjects[0]);
+}
