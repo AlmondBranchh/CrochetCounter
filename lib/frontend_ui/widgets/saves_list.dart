@@ -1,5 +1,6 @@
 import 'package:crochet_counter/logic/data.dart';
 import 'package:flutter/material.dart';
+import 'package:crochet_counter/frontend_ui/colors.dart';
 
 class SavesList extends StatefulWidget {
   const SavesList({Key? key}) : super(key: key);
@@ -17,8 +18,12 @@ class _SavesListState extends State<SavesList> {
       children: [
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              fixedSize: Size(150, 50),
-              shape: RoundedRectangleBorder(),
+              primary: thirdColor,
+              fixedSize: Size(260, 56),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15))
+              ),
+              
             ),
             onPressed: (){
               setState((){
@@ -29,11 +34,11 @@ class _SavesListState extends State<SavesList> {
                 "Save",
               style: TextStyle(
                 fontSize: 24,
+                color: firstColor
               ),
             )
         ),
         savesListSection(context),
-
       ],
     );
   }
@@ -42,9 +47,10 @@ class _SavesListState extends State<SavesList> {
 Widget savesListSection(BuildContext context){
 
   return ListView.builder(
+    physics: ScrollPhysics(),
     scrollDirection: Axis.vertical,
     shrinkWrap: true,
-    itemCount: GetItemCount(),
+    itemCount: GetSaveList().length,
     itemBuilder: (context, index){
       return saveListTile(index);
     }
@@ -55,55 +61,42 @@ Widget saveListTile(int index){
   return ListTile(
     title: Padding(
       padding: EdgeInsets.symmetric(vertical: 8),
-      child:  Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(
-          SavesListNameString(index),
-          style: TextStyle(
-            fontSize: GetFontSize(index)
-          ),
-        ),
-        Text(
-          SavesListValueString(index),
-          style:  TextStyle(
-              fontSize: GetFontSize(index)
-          ),
-        ),
-      ],
-    )
+      child:  Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              SavesListNameString(index),
+              style: TextStyle(
+                fontFamily: "Inter",
+                color: firstColor,
+                fontSize: GetFontSize(index)
+              ),
+            ),
+            Text(
+              SavesListValueString(index),
+              style:  TextStyle(
+                fontFamily: "Inter",
+                color: firstColor,
+                  fontSize: GetFontSize(index)+12
+              ),
+            ),
+          ],
+    ),
+          Container(
+            width: 375,
+            height: 2,
+            decoration: BoxDecoration(
+              color: firstColor,
+              borderRadius: BorderRadius.all(Radius.circular(4))
+            ),
+          )
+        ],
+      )
     )
   );
 }
 
-/*Widget FirstSaveListRow(int index){
-  if(SavesListIndex() - index < 1) {
-    return Container(
-      child: Text(" "),
-    );
-  } else {
-    return Container(
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-        children: [
-          Text(
-              "Row""${SavesListIndex() - index}"": ",
-              style: TextStyle(
-                fontSize: 64,
-              ),
-          ),
-          Text(
-              SavesListValueString(SavesListIndex()-index-1),
-              style: TextStyle(
-                fontSize: 56,
-              ),
-
-          ),
-        ],
-      ),
-    );
-  }
-}
-
- */

@@ -26,7 +26,7 @@ String GetCounterValueString(){
 
 void AddCounterValueToSavesList(){
   savesList.insert(0, counter.toString());
-  savesListNames.insert(0, "Row"+"${savesListNames.length}");
+  savesListNames.insert(0, "Row "+"${savesListNames.length}");
 }
 
 String SavesListValueString(int index){
@@ -74,5 +74,6 @@ int GetItemCount(){
 }
 
 double GetFontSize(int index){
-  return 48-(index.toDouble()*2);
+  if(index > 5){return 30.toDouble();}
+  else {return 40-(index.toDouble()*2);}
 }

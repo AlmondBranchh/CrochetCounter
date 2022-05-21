@@ -6,6 +6,7 @@ import 'package:crochet_counter/frontend_ui/screens/project_selector.dart';
 import 'package:crochet_counter/frontend_ui/screens/savelist_screen.dart';
 import 'package:crochet_counter/frontend_ui/screens/settings.dart';
 import 'package:crochet_counter/frontend_ui/colors.dart';
+import 'package:crochet_counter/frontend_ui/widgets/clock.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -81,11 +82,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
       ),
       body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.max,
       children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: ClockWidget(),
+        ),
         CounterSection(),
         SavesList(),
     ],
