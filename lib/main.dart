@@ -1,3 +1,4 @@
+import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/frontend_ui/screens/home_screen.dart';
 
@@ -10,7 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: fourthColor,
+      ),
       title: "Crochet Counter",
       home: HomeScreen(),
     );

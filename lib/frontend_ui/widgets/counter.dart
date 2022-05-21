@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:crochet_counter/logic/data.dart';
 import 'package:crochet_counter/frontend_ui/widgets/manual_counter_change.dart';
 import 'package:flutter/services.dart';
+import 'package:crochet_counter/frontend_ui/colors.dart';
+import 'dart:math' as math;
 
 class CounterSection extends StatefulWidget {
   const CounterSection({Key? key}) : super(key: key);
@@ -19,13 +21,13 @@ class _CounterSectionState extends State<CounterSection> {
       padding: const EdgeInsets.symmetric(vertical: 24),
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.min ,
+      mainAxisSize: MainAxisSize.max ,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.blue,
-            fixedSize: const Size(65, 65),
+            primary: secondColor,
+            fixedSize: const Size(60, 60),
             shape: const CircleBorder(),
           ),
 
@@ -34,13 +36,25 @@ class _CounterSectionState extends State<CounterSection> {
             SubFromCounter();
           });
             },
-          child: const Icon(Icons.arrow_back_ios_rounded),
+            child: Container(
+                            width: 26,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              borderRadius : BorderRadius.only(
+                                topLeft: Radius.circular(3),
+                                topRight: Radius.circular(3),
+                                bottomLeft: Radius.circular(3),
+                                bottomRight: Radius.circular(3),
+                              ),
+                              color : Color.fromRGBO(133, 88, 111, 1),
+                            )
+                        )
+                    ),
 
-
-        ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            fixedSize: const Size(250, 250),
+            primary: secondColor,
+            fixedSize: const Size(230, 230),
             shape: const CircleBorder(),
           ),
 
@@ -61,14 +75,19 @@ class _CounterSectionState extends State<CounterSection> {
           },
           child: Text(
             GetCounterValueString(),
-            style: TextStyle(fontSize: 84),
+            style: TextStyle(
+              fontFamily: "Inter",
+                fontWeight: FontWeight.bold,
+                fontSize: 86,
+              color: fourthColor
+            ),
           ),
 
 
         ),ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.red,
-              fixedSize: const Size(50, 50),
+              primary: secondColor,
+              fixedSize: const Size(60, 60),
               shape: const CircleBorder(),
             ),
 
@@ -76,10 +95,52 @@ class _CounterSectionState extends State<CounterSection> {
               ClearCounter();
             });
               },
-            child: Icon(Icons.clear)
-        ),
-        ],
-      )
+            child: Stack(
+    children: <Widget>[
+    Positioned(
+    top: 25,
+    left: 2,
+    child: Transform.rotate(
+    angle: 45 * (math.pi / 180),
+    child: Container(
+    width: 28,
+    height: 8,
+    decoration: BoxDecoration(
+    borderRadius : BorderRadius.only(
+    topLeft: Radius.circular(3),
+    topRight: Radius.circular(3),
+    bottomLeft: Radius.circular(3),
+    bottomRight: Radius.circular(3),
+    ),
+    color : Color.fromRGBO(133, 88, 111, 1),
+    )
+    ),
+    )
+    ),Positioned(
+    top: 25,
+    left: 2,
+    child: Transform.rotate(
+    angle: -45 * (math.pi / 180),
+    child: Container(
+    width: 28,
+    height: 8,
+    decoration: BoxDecoration(
+    borderRadius : BorderRadius.only(
+    topLeft: Radius.circular(3),
+    topRight: Radius.circular(3),
+    bottomLeft: Radius.circular(3),
+    bottomRight: Radius.circular(3),
+    ),
+    color : Color.fromRGBO(133, 88, 111, 1),
+    )
+    ),
+    )
+    ),
+    ]
+    )
+    ),
+    ]
+    )
     );
   }
 }
