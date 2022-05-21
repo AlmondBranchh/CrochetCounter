@@ -16,86 +16,79 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>{
 
-  void initState(){
-    super.initState();
-    LoadProject();
-  }
-
-  void dispose(){
-    SaveProject();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(
-          GetCurrentProjectName(),
-          textAlign: TextAlign.center,
-          style: const TextStyle(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text(
+            GetCurrentProjectName(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: firstColor,
+            ),
+          ),
+          leading: IconButton(
+            onPressed: (){
+              SaveProject();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProjectSelector())
+              ).then((value) => setState((){}));
+            },
+            icon: Icon(Icons.menu),
             color: firstColor,
           ),
-        ),
-        leading: IconButton(
-          onPressed: (){
-            SaveProject();
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProjectSelector())
-            ).then((value) => setState((){}));
-          },
-          icon: Icon(Icons.menu),
-          color: firstColor,
-        ),
-        actions: [
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+          actions: [
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SavesListScreen())
+                    );
+                  },
+                  icon: Icon(Icons.book),
+                  color: firstColor,
+                )
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 16),
               child: IconButton(
                 onPressed: (){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SavesListScreen())
+                      MaterialPageRoute(builder: (context) => const SettingsScreen())
                   );
                 },
-                icon: Icon(Icons.book),
+                icon: Icon(Icons.settings),
                 color: firstColor,
-              )
-          ),
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: IconButton(
-              onPressed: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SettingsScreen())
-                );
-              },
-              icon: Icon(Icons.settings),
-              color: firstColor,
-            ),
-          )
-        ],
+              ),
+            )
+          ],
 
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
-      children: [
-        Align(
-          alignment: Alignment.topLeft,
-          child: ClockWidget(),
         ),
-        CounterSection(),
-        SavesList(),
-    ],
-      )
-      )
+        body: SingleChildScrollView(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.max,
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: ClockWidget(),
+          ),
+          CounterSection(),
+          SavesList(),
+      ],
+        )
+        )
+
     );
+    }
   }
-}
+
 
