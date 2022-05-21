@@ -36,7 +36,7 @@ Project mockProject(){
   );
 }
 
-void LoadProject() async {
+Future LoadProject() async {
   WidgetsFlutterBinding.ensureInitialized();
   final database = openDatabase(
     join(await getDatabasesPath(), "projects.db"),
@@ -60,7 +60,6 @@ void LoadProject() async {
         );
       });
     }
-
     listOfProjects = await getProjects();
     for (Project project in listOfProjects){
       print(project.currentProject);
@@ -72,6 +71,7 @@ void LoadProject() async {
   SetSaveList(currentProject.savesList);
   SetNamesList(currentProject.namesList);
   currentProject.currentProject = 0;
+  SaveProject();
   }
 
 List<Project> GetProjectList(){
