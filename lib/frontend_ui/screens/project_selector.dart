@@ -1,6 +1,6 @@
 import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:crochet_counter/frontend_ui/widgets/create_new_project.dart';
+import 'package:crochet_counter/frontend_ui/screens/create_new_project.dart';
 import 'package:crochet_counter/logic/project.dart';
 
 class ProjectSelector extends StatefulWidget {

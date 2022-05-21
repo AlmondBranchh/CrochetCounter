@@ -28,10 +28,10 @@ Project currentProject = mockProject();
 
 Project mockProject(){
   return Project(
-    name: "Mock Project",
+    name: "Tutorial Project",
     counterValue: 7,
-    savesList: "1,2,3",
-    namesList: "Row1,Row2,Row3",
+    savesList: "43,23,15",
+    namesList: "Row 3,Row 2,Row 1",
     currentProject: 0,
   );
 }
@@ -60,9 +60,9 @@ Future LoadProject() async {
         );
       });
     }
+
     listOfProjects = await getProjects();
     for (Project project in listOfProjects){
-      print(project.currentProject);
       if(project.currentProject == 1){
         currentProject = project;
       }

@@ -14,6 +14,7 @@ class _NewProjectWindowState extends State<NewProjectWindow> {
 
   void _createNewProject(){
     CreateNewProject(projectNameController.text);
+    Navigator.pop(context);
   }
 
   @override
