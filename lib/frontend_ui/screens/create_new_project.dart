@@ -1,3 +1,4 @@
+import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/logic/project.dart';
 
@@ -10,7 +11,7 @@ class NewProjectWindow extends StatefulWidget {
 
 class _NewProjectWindowState extends State<NewProjectWindow> {
 
-  TextEditingController projectNameController = new TextEditingController();
+  TextEditingController projectNameController = TextEditingController();
 
   void _createNewProject(){
     CreateNewProject(projectNameController.text);
@@ -20,20 +21,81 @@ class _NewProjectWindowState extends State<NewProjectWindow> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: thirdColor,
+        title: const Center(
+          child: Text(
+            "Create New Project",
+            style: TextStyle(
+              color: firstColor,
+            ),
+          ),
+        ),
         content: SizedBox(
-          width: 200,
-          height: 200,
+          width: 300,
+          height: 150,
           child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TextField(
+               TextField(
+                cursorColor: secondColor,
+                style: const TextStyle(
+                  color: firstColor,
+                  fontSize: 28,
+                ),
                 controller: projectNameController,
-              ),
-              Row(
-                children: [
-                  ElevatedButton(
-                    child: Text("Save"),
-                    onPressed: _createNewProject,
+                decoration: const InputDecoration(
+                  labelText: "Project Name",
+                  labelStyle: TextStyle(
+                    color: secondColor,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: secondColor),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: secondColor),
+                  ),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: secondColor),
+                  ),
                   )
+                  ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: fourthColor
+                      ),
+                    child: const Text(
+                        "Cancel",
+                      style: TextStyle(
+                        color: firstColor,
+                      ),
+                    ),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: secondColor,
+                      ),
+                      onPressed: _createNewProject,
+                      child: const Text(
+                          "Save",
+                        style: TextStyle(
+                          color: fourthColor
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],

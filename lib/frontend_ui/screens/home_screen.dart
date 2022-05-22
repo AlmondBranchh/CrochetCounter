@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:crochet_counter/frontend_ui/widgets/counter.dart';
 import 'package:crochet_counter/logic/project.dart';
 import 'package:crochet_counter/frontend_ui/screens/project_selector.dart';
-import 'package:crochet_counter/frontend_ui/screens/savelist_screen.dart';
 import 'package:crochet_counter/frontend_ui/screens/settings.dart';
 import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:crochet_counter/frontend_ui/widgets/clock.dart';
-import 'package:crochet_counter/logic/project.dart';
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -48,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen>{
                 color: firstColor,
               ),
               actions: [
-                Padding(
+                /*Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: IconButton(
                       onPressed: () {
@@ -61,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       icon: Icon(Icons.book),
                       color: firstColor,
                     )
-                ),
+                ), */
                 Padding(
                   padding: EdgeInsets.only(right: 16),
                   child: IconButton(
