@@ -7,6 +7,7 @@ List<String> savesList = <String>[];
 List<String> savesListNames = <String>[];
 int selectedProjectIndex = 0;
 Duration projectTime = Duration();
+int selectedRowIndex = 0;
 
 void AddToCounter(){
   counter ++;
@@ -100,5 +101,26 @@ void SetProjectTime(Duration duration){
 
 Duration GetProjectTimer(){
   return projectTime;
+}
+
+void SetSelectedRowIndex(int index){
+  selectedProjectIndex = index;
+}
+
+int GetSelectedRowIndex(){
+  return selectedProjectIndex;
+}
+
+void SetSaveListName(String name){
+  savesListNames.removeAt(selectedRowIndex);
+  savesListNames.insert(
+    selectedProjectIndex,
+    name
+  );
+}
+
+void DeleteRow(int index){
+  savesListNames.removeAt(index);
+  savesList.removeAt(index);
 }
 

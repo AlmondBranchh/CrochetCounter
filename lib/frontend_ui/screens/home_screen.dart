@@ -2,7 +2,6 @@ import 'package:crochet_counter/frontend_ui/widgets/saves_list.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/frontend_ui/widgets/counter.dart';
 import 'package:crochet_counter/logic/project.dart';
-import 'package:crochet_counter/frontend_ui/screens/project_selector.dart';
 import 'package:crochet_counter/frontend_ui/screens/settings.dart';
 import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:crochet_counter/frontend_ui/widgets/clock.dart';
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>{
                   color: firstColor,
                 ),
               ),
-              leading: IconButton(
+              /*leading: IconButton(
                 onPressed: () {
                   SaveProject();
                   Navigator.push(
@@ -45,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen>{
                 },
                 icon: Icon(Icons.menu),
                 color: firstColor,
-              ),
+              ),*/
               actions: [
                 /*Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
