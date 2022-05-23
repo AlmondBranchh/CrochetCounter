@@ -6,7 +6,9 @@ import 'package:crochet_counter/logic/data.dart';
 
 bool timerOn = false;
 Timer? timer;
+Timer? blinker;
 Duration duration = Duration();
+Color color = secondColor;
 
 class ClockWidget extends StatefulWidget {
   const ClockWidget({Key? key}) : super(key: key);
@@ -20,24 +22,39 @@ class _ClockWidgetState extends State<ClockWidget> {
   Widget build(BuildContext context) {
 
     void addTime(){
-      final seconds = duration.inSeconds + 1;
-      duration = Duration(seconds: seconds);
-      SetProjectTime(duration);
+      final seconds = GetProjectTimer().inSeconds + 1;
+      SetProjectTime(Duration(seconds: seconds));
       setState((){
       });
     }
 
     void startTimer(){
-      duration = GetProjectTimer();
+      color = firstColor;
       timer = Timer.periodic(Duration(seconds: 1),(_) => addTime());
+    }
+
+    void blink(){
+      if(color == secondColor){
+        color = firstColor;
+        setState((){});
+      } else {
+        color = secondColor;
+        setState((){});
+      }
+    }
+
+    void startBlink(){
+      blinker = Timer.periodic(Duration(seconds: 1), (_) => blink());
     }
 
     void toggleTimer(){
         if (timerOn == false){
           startTimer();
+          blinker?.cancel();
           timerOn = true;
         }
         else{
+          startBlink();
           timer?.cancel();
           timerOn = false;
         }
@@ -59,10 +76,10 @@ class _ClockWidgetState extends State<ClockWidget> {
         onPressed: toggleTimer,
         child: Text(
           "${duration.inHours.toString().padLeft(2, "0")}:"+
-          "${duration.inMinutes.remainder(60).toString().padLeft(2, "0")}:"
+          "${GetProjectTimer().inMinutes.remainder(60).toString().padLeft(2, "0")}:"
           "${GetProjectTimer().inSeconds.remainder(60).toString().padLeft(2, "0")}",
               style: TextStyle(
-                color: firstColor,
+                color: color,
                 fontFamily: "Inter",
                     fontSize: 24,
               ),
