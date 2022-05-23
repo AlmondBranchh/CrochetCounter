@@ -6,6 +6,7 @@ int counter = 0;
 List<String> savesList = <String>[];
 List<String> savesListNames = <String>[];
 int selectedProjectIndex = 0;
+Duration projectTime = Duration();
 
 void AddToCounter(){
   counter ++;
@@ -92,3 +93,12 @@ void SelectedProjectIndex(int index){
 int GetSelectedProjectIndex(){
   return selectedProjectIndex;
 }
+
+void SetProjectTime(Duration duration){
+  projectTime = duration;
+}
+
+Duration GetProjectTimer(){
+  return projectTime;
+}
+

@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:crochet_counter/logic/data.dart';
 
 bool timerOn = false;
 Timer? timer;
-Duration duration = Duration(seconds: 0);
+Duration duration = Duration();
 
 class ClockWidget extends StatefulWidget {
   const ClockWidget({Key? key}) : super(key: key);
@@ -21,17 +22,25 @@ class _ClockWidgetState extends State<ClockWidget> {
     void addTime(){
       final seconds = duration.inSeconds + 1;
       duration = Duration(seconds: seconds);
+      SetProjectTime(duration);
       setState((){
       });
     }
 
     void startTimer(){
+      duration = GetProjectTimer();
       timer = Timer.periodic(Duration(seconds: 1),(_) => addTime());
     }
 
     void toggleTimer(){
-        if (timerOn == false){startTimer(); timerOn = true; }
-        else{timer?.cancel(); timerOn = false;}
+        if (timerOn == false){
+          startTimer();
+          timerOn = true;
+        }
+        else{
+          timer?.cancel();
+          timerOn = false;
+        }
     }
 
     return Padding(
@@ -51,7 +60,7 @@ class _ClockWidgetState extends State<ClockWidget> {
         child: Text(
           "${duration.inHours.toString().padLeft(2, "0")}:"+
           "${duration.inMinutes.remainder(60).toString().padLeft(2, "0")}:"
-          "${duration.inSeconds.remainder(60).toString().padLeft(2, "0")}",
+          "${GetProjectTimer().inSeconds.remainder(60).toString().padLeft(2, "0")}",
               style: TextStyle(
                 color: firstColor,
                 fontFamily: "Inter",
