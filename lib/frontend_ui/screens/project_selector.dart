@@ -18,7 +18,7 @@ class _ProjectSelectorState extends State<ProjectSelector> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(
+        title: const Text(
             "Project Selector",
           style: TextStyle(
             color: secondColor
@@ -50,7 +50,9 @@ class _ProjectSelectorState extends State<ProjectSelector> {
                               ),
                             ),
                             Text(
-                              "2:00:00",
+                              "${Duration(seconds: GetProjectList()[index].totalTime).inHours.toString().padLeft(2, "0")}:"+
+                                  "${Duration(seconds: GetProjectList()[index].totalTime).inMinutes.remainder(60).toString().padLeft(2, "0")}:"
+                                      "${Duration(seconds: GetProjectList()[index].totalTime).inSeconds.remainder(60).toString().padLeft(2, "0")}",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: secondColor,

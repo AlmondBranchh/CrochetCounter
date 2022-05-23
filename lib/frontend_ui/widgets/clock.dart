@@ -75,7 +75,7 @@ class _ClockWidgetState extends State<ClockWidget> {
         ),
         onPressed: toggleTimer,
         child: Text(
-          "${duration.inHours.toString().padLeft(2, "0")}:"+
+          "${GetProjectTimer().inHours.toString().padLeft(2, "0")}:"+
           "${GetProjectTimer().inMinutes.remainder(60).toString().padLeft(2, "0")}:"
           "${GetProjectTimer().inSeconds.remainder(60).toString().padLeft(2, "0")}",
               style: TextStyle(
