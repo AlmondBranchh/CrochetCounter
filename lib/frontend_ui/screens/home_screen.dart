@@ -5,6 +5,7 @@ import 'package:crochet_counter/logic/project.dart';
 import 'package:crochet_counter/frontend_ui/screens/settings.dart';
 import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:crochet_counter/frontend_ui/widgets/clock.dart';
+import 'package:crochet_counter/frontend_ui/screens/project_selector.dart';
 
 
 
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen>{
                   color: firstColor,
                 ),
               ),
-              /*leading: IconButton(
+              leading: IconButton(
                 onPressed: () {
                   SaveProject();
                   Navigator.push(
@@ -44,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen>{
                 },
                 icon: Icon(Icons.menu),
                 color: firstColor,
-              ),*/
-              actions: [
-                /*Padding(
+              ),
+              /*actions: [
+                Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: IconButton(
                       onPressed: () {
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen>{
                       icon: Icon(Icons.book),
                       color: firstColor,
                     )
-                ), */
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: 16),
                   child: IconButton(
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen>{
                     color: firstColor,
                   ),
                 )
-              ],
+              ],*/
 
             ),
             body: SingleChildScrollView(
