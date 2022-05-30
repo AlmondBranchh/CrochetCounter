@@ -2,7 +2,7 @@ import 'package:crochet_counter/frontend_ui/colors.dart';
 import 'package:crochet_counter/logic/project.dart';
 import 'package:flutter/material.dart';
 import 'package:crochet_counter/frontend_ui/screens/home_screen.dart';
-import 'dart:async';
+
 
 void main() async {
   runApp( const MyApp());
